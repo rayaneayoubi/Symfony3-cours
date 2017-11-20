@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Intro Symfony</title>
+          <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+          /*ul{
+            cursor: pointer;
+          }
+        li:hover >  ul{
+            display:block !important;
+
+          }*/
+          .submenu{
+            display:none;
+            position:absolute;
+            top: 37px;
+            left:25px;
+            background-color: #ccc;
+            padding: 8px;
+            list-style: none;
+            border-radius: 15px;
+            width: 150px;
+          }
+          nav>ul>li {
+            position: relative;
+          }
+          li:hover >ul.submenu{
+            display: block;
+            cursor: pointer;
+          }
+
+        </style>
+
+
+
+          {% block css %}{% endblock %}
+    </head>
+    <body class="container">
+      <nav>
+        <ul class="nav nav-tabs">
+          <li>  <a href={{ path("homepage")}}>Acceuil</a>  </li>
+            <li>  <a href={{ path("fruit_admin_page")}}>Add a fruit</a>  </li>
+          <li>
+        <a >  More </a>
+            <ul class="submenu">
+             <!-- <ul >style="display:none" -->
+              <li>  <a href={{ path("fruits_page")}}>Fruits</a>  </li>
+              <li>  <a href={{ path("fruits_comestibles")}}>Fruits Comestibles</a>  </li>
+              <li>  <a href={{ path("example_page")}}>Example</a>  </li>
+                <li>  <a href={{ path("producer_add")}}>Add Producer</a>  </li>
+                
+             </ul>
+          </li>
+
+     </ul>
+      </nav>
+        {% block body %}{% endblock %}
+    </body>
+</html>

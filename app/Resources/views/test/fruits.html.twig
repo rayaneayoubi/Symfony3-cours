@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+  {% block css %}
+<style >
+  .not-comestible{
+    color:orange;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<!-- <h1>Liste de fruits (dynamique.twig)</h1> -->
+<h1>{{title}}</h1>
+<p>What I feel now is <strong>{{ message }}</strong></p>
+<ul>
+  {% for fruit in fruits %}
+  <!-- foreach(fruits as fruit) -->
+  <li>{{ fruit }}</li>
+  {%endfor%}
+</ul>
+<select>
+  {% for f in fruits2 %}
+  <option>{{ f.nom }}</option>
+{% endfor %}
+</select>
+<table class="table table-striped table-bordered" style="width:50%">
+  <tr>
+    <th>nom</th>
+    <th>origin</th>
+    <th>comestible</th>
+  </tr>
+  {% for f in fruits2 %}
+  <tr>
+    <td>{{ f.nom }}</td>
+    <td>{{ f.origin }}</td>
+    <td>
+      {% if not f.comestible %} <span class="not-comestible"> Non </span>{% endif %} comestible
+  </td>
+  </tr>
+  {% endfor %}
+</table>
+{% if toto %} <p>Toto est vrai</p>
+{% else %}<p>Toto n'est pas vrai</p>
+{% endif %}
+<table class="table table-striped table-bordered" style="width:50%">
+  <tr>
+    <th>nom</th>
+    <th>origin</th>
+    <th>comestible</th>
+    <th>wiki</th>
+  </tr>
+  {% for f in fruits3 %}
+  <tr>
+    <td>{{ f.getName() }}</td>
+    <td>{{ f.origin }}</td>
+    <td>
+      {% if not f.getComestible() %} <span class="not-comestible"> Dangereux </span>
+      {%else%} Auncun risque connu
+      {% endif %}
+  </td>
+  <td>
+    {% if f.getUrl() %} <a href="{{f.getUrl}}" target="_blank">url</a>
+    {%else%} No url found
+    {% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
